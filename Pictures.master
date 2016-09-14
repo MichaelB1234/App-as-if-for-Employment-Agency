@@ -1,0 +1,70 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Pictures.master.cs" Inherits="Pictures1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">    
+	<title style="color:rgba(0,0,255,1.0);">EmploymentAgencyAppDemo</title>
+    <link type="text/css" rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/bootstrap-flat.extras.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/bootstrap-flat.extras.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/bootstrap-flat.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/bootstrap-theme.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/bootstrap-theme.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/bootstrap.css" />
+    
+    <script src='<%= Page.ResolveUrl("~/Scripts/jquery-2.1.4.min.js") %>'></script>
+    <asp:ContentPlaceHolder id="ContentPlaceHolderHead" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        
+        .Pictures-header {
+            background-color: transparent;
+    color: rgba(0,255,0,1.0);
+     }
+        
+    </style>
+   
+</head>
+<body id="picturebody" style="background-size:100%;">
+    <div>
+        <form id="form1" runat="server">
+            <div class="col-lg-12 col-md-12 col-sm-12  Pictures-header"  style="padding:5px;" >
+                <asp:Panel id="UpdatePanel1" runat="server">
+                    <div>
+                        <div class="col-md-10 col-lg-10 col-sm-10 col-xs-offset-0" style="align-items: flex-start;">
+                            <div style="font-size: medium;">
+                                <img src="Images/Logo.png" alt="Logo" height="212" width="438" /><span style="color:White"> EmploymentAgencyAppDemo </span>
+                            </div>
+                            <div style="font-size: small; margin-top: 0;">
+                                <%--64MB is the largest file size allowed. Any file may theoretically be uploaded but some types are untested.--%>
+                            </div>                           
+                        </div>
+                        <div class="col-md-2 col-lg-2 col-sm-2" style="align-items: flex-end;">
+                            <div style="vertical-align: middle; float: right">
+                                <asp:Label ID="lblName" runat="server"></asp:Label>
+                                <asp:Button ID="btnLogout" runat="server" CssClass="button btn btn-default btn-sm" OnClick="btnLogout_Click" Text="Logout" />
+                            </div>
+                        </div>
+                    </div>
+                </asp:Panel>
+            
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderBody" runat="server">
+                   
+                </asp:ContentPlaceHolder>
+            </div>
+                </div>
+        </form>
+    </div>
+
+    <script src='<%= Page.ResolveUrl("~/Scripts/bootstrap.min.js") %>'></script>
+
+
+</body>
+<script>
+    document.getElementById('picturebody').style.backgroundImage = 'url(' + '<%= Session["PictureUrl"].ToString() %>' + ')';
+    document.getElementById('picturebody').style.backgroundColor = '<%= Session["BackColour"].ToString() %>';
+    
+    </script>
+</html>
